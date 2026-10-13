@@ -7,11 +7,12 @@
     const botaoNao = document.querySelector('#bnao');
     const botaoAvançar = document.querySelector('#bavançar');
     const atual = new Date(); //define a data atual. Os get's sao utilizados de acordo com as info do metodo newDate()
-    const imgRetornoAlarme = '<img src="imagens/img-retorno-alarme.jpg" alt="imag">'; //para exibir a imagem na div retorno após o alarme
-   // const imgTelaInicial = '<img src="imagens/img-tela-inicial.png" alt="imag">'; //imagem da tela inicial (gato)
+    const RetornoAlarme = document.querySelector('#alarme');
+   //'<img src="imagens/icone talheres.jpg" alt="imag">'; //para exibir a imagem na div retorno após o alarme
+   const TelaInicial = document.querySelectorAll('.telainicial');
     const somAlarme = '<audio src="sons/digital-alarm-clock-buzzer-458027.mp3" controls/>';
     const meuClique = document.querySelector('#Botoes'); //div que contem os botoes de clique
-   
+  
     
     
     function dataCompleta(){
@@ -46,11 +47,19 @@
       }/*  else if(botaoAvançar == clicado){
         retorno.innerHTML = 'até mais';        
       }  */else {
-        retorno.innerHTML = imgTelaInicial;
+        //retorno.innerHTML = imgTelaInicial;
       };
-    setTimeout(() => {
-      retorno.innerHTML = imgTelaInicial;
-    }, 6000); //tempo de 6 segundos para voltar a tela inicial
+      
+       
+        setTimeout (() => { 
+          retorno.innerHTML = `<div class="telainicial w-30 h-30 ">
+                <img src="imagens/image_f2cfd50f.png" alt="" srcset="">
+                </div>
+                <div class="telainicial">
+                <h1 class="font-bold">Lembrete</h1>
+                <h2>Aguardando sua próxima refeição.</h2>
+                </div>`; //exibe a tela inicial (é mais simples utilizar a tag que quer retornar dentro de crases)
+        }, 6000); //tempo de 6 segundos para voltar a tela inicial
   }
 
    
@@ -58,12 +67,17 @@
     const hora = atual.getHours(); 
     const minuto = atual.getMinutes();
     
-     if(hora === 19 && minuto === 53){
+     if(hora === 13 && minuto === 42 ){
       meuClique.addEventListener('click', clicar); //adiciona o evento de clique aos botões apenas quando o alarme for disparado. o evento escutador deve estar fora da função que irá executar a ação (função clicar).
-      retorno.innerHTML = imgRetornoAlarme + 'Hora da refeição. Você já comeu?'; 
+      TelaInicial.forEach((elemento) => {
+        elemento.style.display = 'none';
+      }); //esconde a tela inicial (como Tela Inicial possui dois elementos em uma classe, é necessário utilizar o forEach para percorrer cada elemento e aplicar o display none)
+      RetornoAlarme.style.display = 'block'; //a div alarme está oculta no HTML. para exibir é necessario colocar o display block no disparo do alarme.
     }  else{
-      retorno.innerHTML = imgTelaInicial;
+      //retorno.innerHTML = imgTelaInicial;
     } 
+    
+         
   }
 
     dataCompleta(); // executa a função

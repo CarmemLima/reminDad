@@ -52,13 +52,13 @@
       
        
         setTimeout (() => { 
-          retorno.innerHTML = `<div class="telainicial w-30 h-30 ">
-                <img src="imagens/image_f2cfd50f.png" alt="" srcset="">
-                </div>
-                <div class="telainicial">
+          retorno.innerHTML = `<div class="telainicial w-20 h-20">
+                <img src="imagens/sino.png" alt="icone sino" >
+              </div>
+              <div class="telainicial">
                 <h1 class="font-bold">Lembrete</h1>
                 <h2>Aguardando sua próxima refeição.</h2>
-                </div>`; //exibe a tela inicial (é mais simples utilizar a tag que quer retornar dentro de crases)
+             </div>`; //exibe a tela inicial (é mais simples utilizar a tag que quer retornar dentro de crases)
         }, 6000); //tempo de 6 segundos para voltar a tela inicial
   }
 
@@ -67,7 +67,7 @@
     const hora = atual.getHours(); 
     const minuto = atual.getMinutes();
     
-     if(hora === 13 && minuto === 42 ){
+     if(hora === 7  ){
       meuClique.addEventListener('click', clicar); //adiciona o evento de clique aos botões apenas quando o alarme for disparado. o evento escutador deve estar fora da função que irá executar a ação (função clicar).
       TelaInicial.forEach((elemento) => {
         elemento.style.display = 'none';
